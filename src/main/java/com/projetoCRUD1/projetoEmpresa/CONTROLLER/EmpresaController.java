@@ -3,6 +3,8 @@ package com.projetoCRUD1.projetoEmpresa.CONTROLLER;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.projetoCRUD1.projetoEmpresa.ENTITY.Empresa;
@@ -18,10 +20,29 @@ public class EmpresaController {
         this.empresaService = ligcaoEmpresaService;
     }
 
+    //chamada para o listar todas as empresas
+    
+
+    @GetMapping("/listarEmpresas")
+    public String listarEmpresas(Model oModel) {
+        oModel.addAttribute("empresas", empresaService.findAll());
+        return "listarEmpresas";
+    }
+
     @GetMapping("/viewCadEmpresa")
     public String mostrarFormCadastro(Model oModel) {
         oModel.addAttribute("empresa", new Empresa());
         return "cadastroEmpresa";
+    }
+
+    @PostMapping("/salvarEmpresa")
+    public String salvarEmpresa(@ModelAttribute Empresa objEmpresa) {
+
+        //chamando o método cadastrar e passando
+        //o objeto("pacotinho") com os dados que precisam ser salvos
+        empresaService.cadastrarEmpresa(objEmpresa);
+
+        return "redirect:/empresaCTR/viewCadEmpresa";
     }
 
 }
