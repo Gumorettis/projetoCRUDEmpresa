@@ -21,11 +21,9 @@ public class EmpresaController {
     }
 
     //chamada para o listar todas as empresas
-    
-
-    @GetMapping("/listarEmpresas")
+    @GetMapping("/listarTodasEmpresas")
     public String listarEmpresas(Model oModel) {
-        oModel.addAttribute("empresas", empresaService.findAll());
+    oModel.addAttribute("empresas", empresaService.findAll());
         return "listarEmpresas";
     }
 
@@ -42,7 +40,7 @@ public class EmpresaController {
         //o objeto("pacotinho") com os dados que precisam ser salvos
         empresaService.cadastrarEmpresa(objEmpresa);
 
-        return "redirect:/empresaCTR/viewCadEmpresa";
+        return "redirect:/empresaCTR/listarTodasEmpresas";
     }
 
 }

@@ -38,7 +38,4 @@ public class Empresa {
         this.ramo = ramo;
     }
 
-    //comentario teste
-    String variavelA;
-
 }
