@@ -1,7 +1,5 @@
 package com.projetoCRUD1.projetoEmpresa.CONTROLLER;
 
-import java.util.List;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -58,7 +56,7 @@ public class EmpresaController {
 
     @PostMapping("/atualizarEmpresa")
     public String atualizarEmpresa(@PathVariable Long id,
-                    @ModelAttribute Empresa objEmpresaAtualizado) {
+            @ModelAttribute Empresa objEmpresaAtualizado) {
 
         empresaService.editarDadoEmpresa(id, objEmpresaAtualizado);
 
@@ -72,11 +70,22 @@ public class EmpresaController {
         return "redirect:/empresaCTR/listarTodasEmpresas";
     }
 
-    @GetMapping("/buscarEmpresaNome")
-    public List<Empresa> executarBuscaPorNome(
-    @RequestParam("nome") String nome_empresa, Model oModel) {
+    @GetMapping("/formBuscarNome")
+    public String mostrarFormBusca(Model oModel) {
+        return "buscarEmpresaNome";
+    }
 
-        return empresaService.buscarEmpresaPorNome(nome_empresa);
+    @GetMapping("/buscarEmpresaNome")
+    public String executarBuscaPorNome(
+            @RequestParam("nome") String nome_empresa, Model oModel) {
+
+        if (nome_empresa != null && !nome_empresa.isEmpty()) {
+            oModel.addAttribute("empresaNome",
+                    empresaService.buscarEmpresaPorNome(nome_empresa));
+        }
+
+        return "buscarEmpresaNome";
+
     }
 
 }
