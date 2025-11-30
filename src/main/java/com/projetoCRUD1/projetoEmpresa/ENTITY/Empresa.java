@@ -6,16 +6,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 
 @Entity
 @Table(name = "tb_empresa")
 @NoArgsConstructor
-@Getter
-@Setter
 public class Empresa {
     
     @Id
@@ -37,5 +33,39 @@ public class Empresa {
         this.cnpj = cnpj;
         this.ramo = ramo;
     }
+
+    public Long getId_empresa() {
+        return id_empresa;
+    }
+
+    public void setId_empresa(Long id_empresa) {
+        this.id_empresa = id_empresa;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public int getCnpj() {
+        return cnpj;
+    }
+
+    public void setCnpj(int cnpj) {
+        this.cnpj = cnpj;
+    }
+
+    public String getRamo() {
+        return ramo;
+    }
+
+    public void setRamo(String ramo) {
+        this.ramo = ramo;
+    }
+
+    
 
 }

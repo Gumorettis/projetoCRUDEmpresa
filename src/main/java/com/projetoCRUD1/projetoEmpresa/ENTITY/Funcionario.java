@@ -8,15 +8,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
 @Table(name = "tb_funcionario")
 @NoArgsConstructor
-@Getter
-@Setter
 public class Funcionario {
 
     @Id
@@ -45,4 +41,43 @@ public class Funcionario {
         this.identificadorEmpresa = identificadorEmpresa;
     }
 
+    public Long getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(Long codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public double getSalario() {
+        return salario;
+    }
+
+    public void setSalario(double salario) {
+        this.salario = salario;
+    }
+
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
+
+    public Empresa getIdentificadorEmpresa() {
+        return identificadorEmpresa;
+    }
+
+    public void setIdentificadorEmpresa(Empresa identificadorEmpresa) {
+        this.identificadorEmpresa = identificadorEmpresa;
+    }
 }
