@@ -53,7 +53,8 @@ public class FuncionarioController {
     }
 
     @GetMapping("/formAtualizar/{id}")
-    public String formAtualizarFuncionario(@PathVariable("id") Long id, Model oModel){
+    public String formAtualizarFuncionario(@PathVariable("id") Long id,
+                                        Model oModel){
 
         Funcionario funcionarioEncontrado = ligacaoFuncionarioService.
         buscarFuncionarioPorId(id).orElseThrow(
@@ -65,5 +66,15 @@ public class FuncionarioController {
         return "editarFuncionario";
     }
 
-    
+    @PostMapping("atualizarFuncionario/{id}")
+    public String editarFuncionario(
+            @PathVariable("id") Long id,
+            @ModelAttribute Funcionario objFuncionarioAtualizado){
+        
+        ligacaoFuncionarioService.atualizarFuncionario(
+            id, objFuncionarioAtualizado);
+
+        return "redirect:/funcionarioCTR/listarFunc";
+    }
+
 }

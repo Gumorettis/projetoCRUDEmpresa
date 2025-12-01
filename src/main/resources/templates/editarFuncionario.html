@@ -7,7 +7,7 @@
 <body>
     <h2>Editar Funcionário</h2>
 
-    <form th:action="@{'/funcionarioCTR/atualizar/'+${funcionario.codigo}}" th:object="${funcionario}" method="post">
+    <form th:action="@{'/funcionarioCTR/atualizarFuncionario/'+${funcionario.codigo}}" th:object="${funcionario}" method="post">
         <label>Nome:</label>
         <input type="text" th:field="*{nome}" /><br>
 
